@@ -110,4 +110,3 @@ C:\Users\Alex\Documents\work\Projects\HotelBooking\AngularMVCRoomBooking\Angular
 C:\Users\Alex\Documents\work\Projects\HotelBooking\AngularMVCRoomBooking\AngularMVCRoomBooking\bin\Newtonsoft.Json.xml
 C:\Users\Alex\Documents\work\Projects\HotelBooking\AngularMVCRoomBooking\AngularMVCRoomBooking\obj\Debug\AngularMVCHotelBooking.dll
 C:\Users\Alex\Documents\work\Projects\HotelBooking\AngularMVCRoomBooking\AngularMVCRoomBooking\obj\Debug\AngularMVCHotelBooking.pdb
-C:\Users\Alex\Documents\work\Projects\HotelBooking\AngularMVCRoomBooking\AngularMVCRoomBooking\obj\Debug\AngularMVCRoomBooking.csprojResolveAssemblyReference.cache
