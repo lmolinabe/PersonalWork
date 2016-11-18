@@ -31,9 +31,16 @@ angularFormsApp.controller('homeController',
     ["$scope", "$location", "$uibModal", "DataService",
     function ($scope, $location, $uibModal, DataService) {
 
-        DataService.getRoomBookings().then(function (results) {
-            var data = results.data;
-        });
+        DataService.getRoomBookings().then(
+            function (results) {
+                //on success
+                var data = results.data;
+            },
+            function (results) {
+                 //on error
+                 var data = results.data;
+            }
+        );
 
         $scope.showCreateRoomBookingForm = function () {
             //$location.path('/newRoomBookingForm');

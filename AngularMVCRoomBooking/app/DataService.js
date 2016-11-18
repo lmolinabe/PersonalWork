@@ -10,11 +10,11 @@
             if (id == 123) {
                 return {
                     id: 2,
-                    roomId: 2,
+                    room: { id: 2 },
                     startDate: new Date(),
                     endDate: new Date(),
-                    bookingStatus: 2,
-                    paymentStatus: 2,
+                    bookingStatus: { id: 2 },
+                    paymentStatus: { id: 2 },
                     advancePaid: 2,
                     totalPaid: 2
                 }
@@ -23,7 +23,7 @@
         }
 
         var insertRoomBooking = function (newRoomBooking) {
-            return true;
+            return $http.post("RoomBooking/Create", newRoomBooking);
         }
 
         var updateRoomBooking = function (roomBooking) {

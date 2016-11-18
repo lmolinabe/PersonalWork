@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,8 @@ namespace AngularMVCRoomBooking.Models
         public virtual BookingStatus BookingStatus { get; set; }
         public virtual PaymentStatus PaymentStatus { get; set; }
         public float AdvancePaid { get; set; }
+        [Required]
+        [Range(1,5000)]
         public float TotalPaid { get; set; }
     }
 }

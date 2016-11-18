@@ -82,15 +82,26 @@
             
             if ($scope.editableRoomBooking.id == 0) {
                 //insert new RoomBooking
-                DataService.insertRoomBooking($scope.editableRoomBooking);
+                DataService.insertRoomBooking($scope.editableRoomBooking).then(
+                    function (results) {
+                        //on success
+                        $scope.roomBooking = angular.copy($scope.editableRoomBooking);
+                        $scope.roomBooking.id = results.data.id;
+                        $uibModalInstance.close();
+                    },
+                    function (results) {
+                        //on error
+                        //alert(results);
+                        $scope.hasFormError = true;
+                        $scope.formErrors = results.statusText;
+                    });
             }
             else {
                 //update the RoomBooking
                 DataService.updateRoomBooking($scope.editableRoomBooking);
             }
 
-            $scope.roomBooking = DataService.editableRoomBooking;
-            $uibModalInstance.close();
+
         }
 
         $scope.cancelForm = function () {

@@ -20,21 +20,8 @@ namespace AngularMVCRoomBooking.Controllers
         {
             var list = db.RoomBookings.ToList();
 
-            var camelCaseFormatter = new JsonSerializerSettings();
-            camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            var jsonResult = new ContentResult
-            {
-                Content = JsonConvert.SerializeObject(db.RoomBookings.ToList(), camelCaseFormatter),
-                ContentType = "application/json"
-            };
-
-            return jsonResult;
-        }
-
-        // GET: RoomBooking
-        public ActionResult Index()
-        {
-            return View(db.RoomBookings.ToList());
+            return GetJsonContentResult(list);
+            //return new HttpStatusCodeResult(404,"Custo Error Message");
         }
 
         // GET: RoomBooking/Details/5
@@ -53,26 +40,49 @@ namespace AngularMVCRoomBooking.Controllers
         }
 
         // GET: RoomBooking/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: RoomBooking/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StartDate,EndDate,AdvancePaid,TotalPaid")] RoomBooking roomBooking)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,StartDate,EndDate,AdvancePaid,TotalPaid")] RoomBooking roomBooking)
+        public ActionResult Create(RoomBooking roomBooking)
         {
             if (ModelState.IsValid)
             {
-                db.RoomBookings.Add(roomBooking);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var id = new { id = 12345 };
+                return GetJsonContentResult(id);
+                //return new HttpStatusCodeResult(HttpStatusCode.Created, "New RoomBooking added");
             }
 
-            return View(roomBooking);
+            List<string> errors = new List<string>();
+            errors.Add("Insert Failed.");
+            if (!ModelState.IsValidField("TotalPaid"))
+            {
+                errors.Add("Total Paid musta have a numeric value");
+            }
+
+            var s = string.Join("\n",errors);
+
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, string.Join(" ",errors));
+        }
+
+        public ContentResult GetJsonContentResult(object data)
+        {
+            var camelCaseFormatter = new JsonSerializerSettings();
+            camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            var jsonResult = new ContentResult
+            {
+                Content = JsonConvert.SerializeObject(data, camelCaseFormatter),
+                ContentType = "application/json"
+            };
+
+            return jsonResult;
         }
 
         // GET: RoomBooking/Edit/5
