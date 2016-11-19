@@ -2,14 +2,6 @@
     ["$scope", "$window", "$routeParams", "$uibModalInstance", "DataService", "Parameters",
     function roomBookingController($scope, $window, $routeParams, $uibModalInstance, DataService, Parameters) {
 
-/*
-        if ($routeParams.id) {
-            $scope.roomBooking = DataService.getRoomBooking($routeParams.id);
-        }
-        else {
-            $scope.roomBooking = { id: 0 };
-        }
-*/
         if (Parameters.RoomBookingId > 0) {
             $scope.roomBooking = DataService.getRoomBooking(Parameters.RoomBookingId);
         }
@@ -57,7 +49,6 @@
         };
 
         $scope.dateOptions = {
-            //dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2025, 5, 22),
             minDate: new Date(),
@@ -91,14 +82,23 @@
                     },
                     function (results) {
                         //on error
-                        //alert(results);
                         $scope.hasFormError = true;
                         $scope.formErrors = results.statusText;
                     });
             }
             else {
                 //update the RoomBooking
-                DataService.updateRoomBooking($scope.editableRoomBooking);
+                DataService.updateRoomBooking($scope.editableRoomBooking).then(
+                    function (results) {
+                        //on success
+                        $scope.roomBooking = angular.copy($scope.editableRoomBooking);
+                        $uibModalInstance.close();
+                    },
+                    function (results) {
+                        //on error
+                        $scope.hasFormError = true;
+                        $scope.formErrors = results.statusText;
+                    });;
             }
 
 

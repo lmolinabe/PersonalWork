@@ -70,6 +70,15 @@ namespace AngularMVCRoomBooking.Controllers
             var s = string.Join("\n",errors);
 
             return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, string.Join(" ",errors));
+
+            if (ModelState.IsValid)
+            {
+                db.RoomBookings.Add(roomBooking);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(roomBooking);
         }
 
         public ContentResult GetJsonContentResult(object data)
@@ -83,6 +92,25 @@ namespace AngularMVCRoomBooking.Controllers
             };
 
             return jsonResult;
+        }
+
+        public ActionResult Update(RoomBooking roomBooking)
+        {
+            if (ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.OK, "Update success");
+            }
+
+            List<string> errors = new List<string>();
+            errors.Add("Update Failed.");
+            if (!ModelState.IsValidField("TotalPaid"))
+            {
+                errors.Add("Total Paid musta have a numeric value");
+            }
+
+            var s = string.Join("\n", errors);
+
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, string.Join(" ", errors));
         }
 
         // GET: RoomBooking/Edit/5

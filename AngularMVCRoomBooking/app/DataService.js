@@ -3,7 +3,7 @@
     function ($http) {
 
         var getRoomBookings = function () {
-            return $http.get("RoomBooking/GetRoomBookings");
+            return $http.get("api/RoomBooking/Get");
         }
 
         var getRoomBooking = function (id) {
@@ -23,11 +23,11 @@
         }
 
         var insertRoomBooking = function (newRoomBooking) {
-            return $http.post("RoomBooking/Create", newRoomBooking);
+            return $http.post("api/RoomBookingWebApi/Post", newRoomBooking);
         }
 
         var updateRoomBooking = function (roomBooking) {
-            return true;
+            return $http.put("api/RoomBookingWebApi/Put", roomBooking);
         }
 
         return {
