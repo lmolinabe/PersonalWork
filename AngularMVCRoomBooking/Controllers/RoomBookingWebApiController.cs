@@ -41,30 +41,40 @@ namespace AngularMVCHotelBooking.Controllers
         {
             HttpResponseMessage response = null;
 
-            if (ModelState.IsValid)
+            try
             {
-                db.RoomBookings.Add(roomBooking);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.RoomBookings.Add(roomBooking);
+                    db.SaveChanges();
 
-                response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StringContent("12345");
+                    response = new HttpResponseMessage(HttpStatusCode.OK);
+                    response.Content = new StringContent("12345");
+                    return response;
+                }
+
+                List<string> errors = new List<string>();
+                errors.Add("Insert Failed.");
+                if (!ModelState.IsValidField("TotalPaid"))
+                {
+                    errors.Add("Total Paid must has a numeric value");
+                }
+
+                var s = string.Join("\n", errors);
+
+
+                response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                response.Content = new StringContent(string.Join(" ", errors));
+
                 return response;
             }
-
-            List<string> errors = new List<string>();
-            errors.Add("Insert Failed.");
-            if (!ModelState.IsValidField("TotalPaid"))
+            catch (Exception e)
             {
-                errors.Add("Total Paid musta have a numeric value");
+                response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                response.Content = new StringContent(e.Message);
+
+                return response;
             }
-
-            var s = string.Join("\n", errors);
-
-
-            response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-            response.Content = new StringContent(string.Join(" ", errors));
-
-            return response;
         }
 
         // PUT: api/RoomBookingWebApi/5

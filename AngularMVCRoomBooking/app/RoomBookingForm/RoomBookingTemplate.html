@@ -23,7 +23,7 @@
                 <label for="roomId" class="col-sm-3 control-label">Room</label>
                 <div class="col-sm-9">
                     <select name="roomId" id="roomId" class="form-control"
-                            ng-model="editableRoomBooking.room.id"
+                            ng-model="editableRoomBooking.roomId"
                             ng-options="room.value as room.label for room in rooms"></select>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <label for="bookingStatus" class="col-sm-3 control-label">Booking Status</label>
                 <div class="col-sm-9">
                     <select name="bookingStatus" id="bookingStatus" class="form-control"
-                            ng-model="editableRoomBooking.bookingStatus.id"
+                            ng-model="editableRoomBooking.bookingStatusId"
                             ng-options="bookingStatus.value as bookingStatus.label for bookingStatus in bookingStatuses"></select>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <label for="paymentStatus" class="col-sm-3 control-label">Payment Status</label>
                 <div class="col-sm-9">
                     <select name="paymentStatus" id="paymentStatus" class="form-control"
-                            ng-model="editableRoomBooking.paymentStatus.id"
+                            ng-model="editableRoomBooking.paymentStatusId"
                             ng-options="paymentStatus.value as paymentStatus.label for paymentStatus in paymentStatuses"></select>
                 </div>
             </div>

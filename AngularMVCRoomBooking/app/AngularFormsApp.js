@@ -9,6 +9,10 @@ angularFormsApp.config(
             templateUrl: 'app/Home.html',
             controller: 'homeController'
         })
+        .when('/dashboard', {
+            templateUrl: 'app/Dashboard.html',
+            controller: 'homeController'
+        })
         .when('/newRoomBookingForm', {
             templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
             controller: 'roomBookingController'
@@ -31,20 +35,18 @@ angularFormsApp.controller('homeController',
     ["$scope", "$location", "$uibModal", "DataService",
     function ($scope, $location, $uibModal, DataService) {
 
-        DataService.getRoomBookings().then(
-            function (results) {
-                //on success
-                var data = results.data;
-            },
-            function (results) {
-                 //on error
-                 var data = results.data;
-            }
-        );
+        //DataService.getRoomBookings().then(
+        //    function (results) {
+        //        //on success
+        //        var data = results.data;
+        //    },
+        //    function (results) {
+        //         //on error
+        //         var data = results.data;
+        //    }
+        //);
 
         $scope.showCreateRoomBookingForm = function () {
-            //$location.path('/newRoomBookingForm');
-
             $uibModal.open({
                 templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
                 controller: 'roomBookingController',
@@ -58,8 +60,6 @@ angularFormsApp.controller('homeController',
         };
 
         $scope.showUpdateRoomBookingForm = function (id) {
-            //$location.path('/updateRoomBookingForm/' + id);
-
             $uibModal.open({
                 templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
                 controller: 'roomBookingController',
