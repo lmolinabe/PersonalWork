@@ -100,8 +100,6 @@
                         $scope.formErrors = results.statusText;
                     });;
             }
-
-
         }
 
         $scope.cancelForm = function () {

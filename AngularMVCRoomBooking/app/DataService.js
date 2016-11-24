@@ -3,23 +3,11 @@
     function ($http) {
 
         var getRoomBookings = function () {
-            return $http.get("api/RoomBookingWebApi/Get");
+            return $http.get("api/RoomBookingWebApi/");
         }
 
         var getRoomBooking = function (id) {
-            if (id == 123) {
-                return {
-                    id: 2,
-                    roomId: 2,
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    bookingStatusId: 2,
-                    paymentStatusId: 2,
-                    advancePaid: 2,
-                    totalPaid: 2
-                }
-                return undefined;
-            }
+            return $http.get("api/RoomBookingWebApi/"+id);
         }
 
         var insertRoomBooking = function (newRoomBooking) {

@@ -11,7 +11,7 @@ angularFormsApp.config(
         })
         .when('/dashboard', {
             templateUrl: 'app/Dashboard.html',
-            controller: 'homeController'
+            controller: 'dashboardController'
         })
         .when('/newRoomBookingForm', {
             templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
@@ -29,46 +29,3 @@ angularFormsApp.config(
         requireBase: false
     });
 }]);
-
-//Add create a specific folder and controller for this
-angularFormsApp.controller('homeController',
-    ["$scope", "$location", "$uibModal", "DataService",
-    function ($scope, $location, $uibModal, DataService) {
-
-        //DataService.getRoomBookings().then(
-        //    function (results) {
-        //        //on success
-        //        var data = results.data;
-        //    },
-        //    function (results) {
-        //         //on error
-        //         var data = results.data;
-        //    }
-        //);
-
-        $scope.showCreateRoomBookingForm = function () {
-            $uibModal.open({
-                templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
-                controller: 'roomBookingController',
-                resolve: {
-                    Parameters: function () {
-                        return { RoomBookingId: 0 };
-                    }
-                }
-            });
-
-        };
-
-        $scope.showUpdateRoomBookingForm = function (id) {
-            $uibModal.open({
-                templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
-                controller: 'roomBookingController',
-                resolve: {
-                    Parameters: function () {
-                        return { RoomBookingId: id };
-                    }
-                }
-            });
-        };
-
-    }]);

@@ -1,1 +1,110 @@
-﻿TEST
+﻿<style>
+    .actualColor {
+        background-color: #64a449;
+        color: #FFFFFF;
+        border: solid 1px #659EC7;
+        font-size: x-large;
+    }
+
+    .changeColor1 {
+        background-color: #e81a1a;
+        color: #FFFFFF;
+        border: solid 1px #659EC7;
+        font-size: x-large;
+        cursor: pointer;
+    }
+
+
+    .changeColor2 {
+        background-color: #fbe700;
+        color: #be1010;
+        border: dashed 1px #659EC7;
+        font-size: x-large;
+        cursor: pointer;
+    }
+
+    .columns {
+        columns: 4;
+    }
+</style>
+
+<div class="columns">
+    <div ng-repeat="roomBooking in roomBookings">
+        <table>
+            <tr ng-class="{actualColor: roomBooking.BookingStatus.Name == 'Free', changeColor1: roomBooking.BookingStatus.Name == 'Occupied', changeColor2: roomBooking.BookingStatus.Name == 'Reserved'}">
+                <td align="center">
+                    <table style='width: 99%;table-layout:fixed;'>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <b>Room NO : {{roomBooking.Room.Number}}</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <b>Status : {{roomBooking.BookingStatus.Name}}</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span style="font-size:medium">
+                                    Payment Status :<b> {{roomBooking.PaymentStatus.Name}}</b>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span style="font-size:medium">
+                                    Advance Paid :<b> {{roomBooking.AdvancePaid}}</b>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span style="font-size:medium">
+                                    Total Amount Paid : <b>{{roomBooking.TotalPaid}}</b>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span style="font-size:small">
+                                    Booked From  : {{roomBooking.StartDate}} To {{roomBooking.EndDate}}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <img src="~/Images/blank.gif" alt="" width="1" height="2" />
+                </td>
+            </tr>
+            <!--<tr>
+                <td>
+
+                    <img src="~/Images/blank.gif" alt="" width="1" height="2" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <img src="~/Images/blank.gif" alt="" width="1" height="2" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <img src="~/Images/blank.gif" alt="" width="1" height="2" />
+                </td>
+            </tr>-->
+        </table>
+    </div>
+</div>

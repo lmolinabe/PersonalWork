@@ -14,9 +14,10 @@ namespace AngularMVCHotelBooking.Controllers
         private RoomBookingDb db = new RoomBookingDb();
 
         // GET: api/RoomBookingWebApi
-        public IEnumerable<RoomBooking> Get()
+        public HttpResponseMessage Get()
         {
-            return db.RoomBookings.ToList();
+            var response = Request.CreateResponse(HttpStatusCode.OK, db.RoomBookings.ToList());
+            return response;
         }
 
         // GET: api/RoomBookingWebApi/5
