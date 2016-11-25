@@ -1,6 +1,8 @@
 ﻿angularFormsApp.controller('dashboardController',
     ["$scope", "$window", "$routeParams", "DataService",
     function dashboardController($scope, $window, $routeParams, DataService) {
+        $scope.date = new Date();
+
         DataService.getRoomBookings().then(
                 function (results) {
                     //on success
@@ -8,5 +10,6 @@
                 },
                 function (results) {
                     //on error
+                    var test = 1;
                 });;
     }]);

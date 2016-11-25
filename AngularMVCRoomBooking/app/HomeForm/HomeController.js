@@ -3,6 +3,16 @@ angularFormsApp.controller('homeController',
     ["$scope", "$location", "$uibModal", "DataService",
     function ($scope, $location, $uibModal, DataService) {
 
+        DataService.getRoomBookings().then(
+        function (results) {
+            //on success
+            $scope.roomBookings = results.data;
+        },
+        function (results) {
+            //on error
+            var test = 1;
+        });;
+
         $scope.showCreateRoomBookingForm = function () {
             $uibModal.open({
                 templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
