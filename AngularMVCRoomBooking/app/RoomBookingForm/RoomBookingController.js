@@ -3,13 +3,23 @@
     function roomBookingController($scope, $window, $routeParams, $uibModalInstance, DataService, Parameters) {
 
         if (Parameters.RoomBookingId > 0) {
-            $scope.roomBooking = DataService.getRoomBooking(Parameters.RoomBookingId);
+            DataService.getRoomBooking(Parameters.RoomBookingId).then(
+            function (results) {
+                //on success
+                $scope.roomBooking = results.data;
+                //Recreate the date fields (this is necesary to fix the uib-datepicker-popup format)
+                $scope.roomBooking.StartDate = new Date($scope.roomBooking.StartDate);
+                $scope.roomBooking.EndDate = new Date($scope.roomBooking.EndDate);
+                $scope.editableRoomBooking = angular.copy($scope.roomBooking);
+            },
+            function (results) {
+                //on error
+                var test = 1;
+            });
         }
         else {
             $scope.roomBooking = { };
         }
-
-        $scope.editableRoomBooking = angular.copy($scope.roomBooking);
 
         $scope.rooms = [
             { value: 1, label: 101 },
@@ -71,13 +81,13 @@
                 return;
             }
             
-            if ($scope.editableRoomBooking.id == 0) {
+            if ($scope.editableRoomBooking.Id == 0) {
                 //insert new RoomBooking
                 DataService.insertRoomBooking($scope.editableRoomBooking).then(
                     function (results) {
                         //on success
                         $scope.roomBooking = angular.copy($scope.editableRoomBooking);
-                        $scope.roomBooking.id = results.data.id;
+                        $scope.roomBooking.Id = results.data.Id;
                         $uibModalInstance.close();
                     },
                     function (results) {

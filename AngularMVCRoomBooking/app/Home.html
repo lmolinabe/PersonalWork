@@ -2,11 +2,7 @@
        ng-click="showCreateRoomBookingForm()" />
 <br />
 <br />
-<input type="button" class="btn btn-primary" value="Update Room Booking"
-       ng-click="showUpdateRoomBookingForm(123)" />
-
-
-<table style="width: 99%; background-color:#FFFFFF; border solid 2px #6D7B8D; padding 5px;width 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
+<table style="width: 99%; background-color:#FFFFFF; border: solid 2px #6D7B8D; padding: 5px; width: 99%; table-layout:fixed;" cellpadding="2" cellspacing="2">
     <tr style="height: 30px; background-color:#428BCA ; color:#FFFFFF ;border: solid 1px #659EC7;">
         <td width="40" align="center"><b>Edit</b></td>
         <td width="40" align="center"><b>Delete</b></td>
@@ -20,28 +16,22 @@
     </tr>
     <tbody data-ng-repeat="roomBooking in roomBookings">
         <tr>
-
             <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">
-                    <img src="~/Images/edit.gif" alt="Edit" width="24px" height="24px" ng-click="roomBookingEdit(details.BookingID, details.RoomID ,  details.BookedDateFR,  details.BookedDateTO, details.BookingStatus , details.PaymentStatus, details.AdvancePayed, details.TotalAmountPayed)">
-
+                    <img src="~/Images/edit.gif" alt="Edit" width="24px" height="24px" ng-click="showUpdateRoomBookingForm(roomBooking.Id)">
                 </span>
             </td>
-
             <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">
                     <img src="~/Images/delete.gif" alt="Delete" width="24px" height="24px" ng-click="roomBookingDelete(details.BookingID)">
                 </span>
             </td>
-
             <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">{{roomBooking.Room.Id}}</span>
             </td>
-
             <td valign="top" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">{{roomBooking.StartDate | date:'yyyy-MM-dd'}}</span>
             </td>
-
             <td valign="top" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">{{roomBooking.EndDate | date:'yyyy-MM-dd'}}</span>
             </td>
@@ -57,7 +47,6 @@
             <td valign="top" align="right" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
                 <span style="color:#9F000F">{{roomBooking.TotalPaid}}</span>
             </td>
-
         </tr>
     </tbody>
 </table>

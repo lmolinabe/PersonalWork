@@ -11,11 +11,11 @@
         }
 
         var insertRoomBooking = function (newRoomBooking) {
-            return $http.post("api/RoomBookingWebApi/Post", newRoomBooking);
+            return $http.post("api/RoomBookingWebApi", newRoomBooking);
         }
 
         var updateRoomBooking = function (roomBooking) {
-            return $http.put("api/RoomBookingWebApi/Put", roomBooking);
+            return $http.put("api/RoomBookingWebApi/", roomBooking);
         }
 
         return {
