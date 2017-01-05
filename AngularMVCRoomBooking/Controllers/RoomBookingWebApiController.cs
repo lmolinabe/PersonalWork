@@ -110,6 +110,7 @@ namespace AngularMVCHotelBooking.Controllers
         // DELETE: api/RoomBookingWebApi/5
         public void Delete(int id)
         {
+
         }
     }
 }
