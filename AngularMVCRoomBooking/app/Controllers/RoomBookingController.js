@@ -14,7 +14,6 @@
             },
             function (results) {
                 //on error
-                var test = 1;
             });
         }
         else {

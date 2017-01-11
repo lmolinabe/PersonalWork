@@ -10,7 +10,6 @@ angularFormsApp.controller('homeController',
         },
         function (results) {
             //on error
-            var test = 1;
         });;
 
         $scope.showCreateRoomBookingForm = function () {

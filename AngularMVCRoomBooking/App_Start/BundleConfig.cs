@@ -37,10 +37,9 @@ namespace AngularMVCRoomBooking
                 "~/app/AngularFormsApp.js",
                 "~/app/route-config.js",
                 "~/app/DataService.js",
-                "~/app/RoomBookingForm/RoomBookingController.js",
-                "~/app/RoomBookingForm/RoomBookingDirective.js",
-                "~/app/HomeForm/HomeController.js",
-                "~/app/DashboardForm/DashboardController.js"
+                "~/app/Controllers/RoomBookingController.js",
+                "~/app/Controllers/HomeController.js",
+                "~/app/Controllers/DashboardController.js"
                 ));
 
             BundleTable.EnableOptimizations = false;

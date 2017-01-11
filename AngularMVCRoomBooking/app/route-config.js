@@ -4,19 +4,19 @@ angularFormsApp.config(
     function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl: 'app/Home.html',
+                templateUrl: 'app/Views/Home.html',
                 controller: 'homeController'
             })
             .when('/dashboard', {
-                templateUrl: 'app/Dashboard.html',
+                templateUrl: 'app/Views/Dashboard.html',
                 controller: 'dashboardController'
             })
             .when('/newRoomBookingForm', {
-                templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
+                templateUrl: 'app/Views/RoomBookingTemplate.html',
                 controller: 'roomBookingController'
             })
             .when('/updateRoomBookingForm/:id', {
-                templateUrl: 'app/RoomBookingForm/RoomBookingTemplate.html',
+                templateUrl: 'app/Views/RoomBookingTemplate.html',
                 controller: 'roomBookingController'
             })
             .otherwise({

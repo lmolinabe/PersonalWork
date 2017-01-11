@@ -169,9 +169,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RoomBookingController.cs" />
     <Compile Include="Controllers\RoomBookingWebApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,14 +185,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\AngularFormsApp.js" />
-    <Content Include="app\Dashboard.html" />
-    <Content Include="app\DashboardForm\DashboardController.js" />
+    <Content Include="app\Views\Dashboard.html" />
+    <Content Include="app\Controllers\DashboardController.js" />
     <Content Include="app\DataService.js" />
-    <Content Include="app\Home.html" />
-    <Content Include="app\HomeForm\HomeController.js" />
-    <Content Include="app\RoomBookingForm\RoomBookingController.js" />
-    <Content Include="app\RoomBookingForm\RoomBookingDirective.js" />
-    <Content Include="app\RoomBookingForm\RoomBookingTemplate.html" />
+    <Content Include="app\Views\Home.html" />
+    <Content Include="app\Controllers\HomeController.js" />
+    <Content Include="app\Controllers\RoomBookingController.js" />
+    <Content Include="app\Views\RoomBookingTemplate.html" />
     <Content Include="app\route-config.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -247,14 +244,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\RoomBooking\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
